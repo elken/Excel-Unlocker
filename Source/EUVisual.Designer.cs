@@ -34,9 +34,13 @@ namespace ExcelUnlockerVisual {
             this.cbOverwrite = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.rtbConsole = new System.Windows.Forms.RichTextBox();
-            this.cbUnlockVBA = new System.Windows.Forms.CheckBox();
             this.pbUnlocker = new System.Windows.Forms.ProgressBar();
             this.bwProgress = new System.ComponentModel.BackgroundWorker();
+            this.btnLock = new System.Windows.Forms.Button();
+            this.cbUnlockVBA = new System.Windows.Forms.CheckBox();
+            this.cblRemoveVeryHidden = new System.Windows.Forms.CheckBox();
+            this.passwordInput = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnChooseFile
@@ -52,18 +56,18 @@ namespace ExcelUnlockerVisual {
             // tbFilePath
             // 
             this.tbFilePath.Enabled = false;
-            this.tbFilePath.Location = new System.Drawing.Point(156, 36);
+            this.tbFilePath.Location = new System.Drawing.Point(186, 36);
             this.tbFilePath.Name = "tbFilePath";
             this.tbFilePath.ReadOnly = true;
             this.tbFilePath.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tbFilePath.Size = new System.Drawing.Size(292, 20);
+            this.tbFilePath.Size = new System.Drawing.Size(262, 20);
             this.tbFilePath.TabIndex = 1;
             this.tbFilePath.Text = "No file selected";
             // 
             // btnUnlock
             // 
             this.btnUnlock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnUnlock.Location = new System.Drawing.Point(24, 129);
+            this.btnUnlock.Location = new System.Drawing.Point(24, 141);
             this.btnUnlock.Name = "btnUnlock";
             this.btnUnlock.Size = new System.Drawing.Size(75, 23);
             this.btnUnlock.TabIndex = 2;
@@ -96,18 +100,36 @@ namespace ExcelUnlockerVisual {
             this.rtbConsole.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.rtbConsole.Enabled = false;
             this.rtbConsole.ForeColor = System.Drawing.Color.Black;
-            this.rtbConsole.Location = new System.Drawing.Point(156, 68);
+            this.rtbConsole.Location = new System.Drawing.Point(186, 68);
             this.rtbConsole.Name = "rtbConsole";
             this.rtbConsole.ReadOnly = true;
-            this.rtbConsole.Size = new System.Drawing.Size(292, 96);
+            this.rtbConsole.Size = new System.Drawing.Size(262, 139);
             this.rtbConsole.TabIndex = 5;
             this.rtbConsole.Text = "";
+            // 
+            // pbUnlocker
+            // 
+            this.pbUnlocker.Location = new System.Drawing.Point(24, 213);
+            this.pbUnlocker.Name = "pbUnlocker";
+            this.pbUnlocker.Size = new System.Drawing.Size(424, 23);
+            this.pbUnlocker.TabIndex = 7;
+            // 
+            // btnLock
+            // 
+            this.btnLock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnLock.Location = new System.Drawing.Point(105, 141);
+            this.btnLock.Name = "btnLock";
+            this.btnLock.Size = new System.Drawing.Size(75, 23);
+            this.btnLock.TabIndex = 9;
+            this.btnLock.Text = "Lock";
+            this.btnLock.UseVisualStyleBackColor = false;
+            this.btnLock.Click += new System.EventHandler(this.BtnLock_Click);
             // 
             // cbUnlockVBA
             // 
             this.cbUnlockVBA.AutoSize = true;
             this.cbUnlockVBA.Enabled = false;
-            this.cbUnlockVBA.Location = new System.Drawing.Point(24, 95);
+            this.cbUnlockVBA.Location = new System.Drawing.Point(24, 118);
             this.cbUnlockVBA.Name = "cbUnlockVBA";
             this.cbUnlockVBA.Size = new System.Drawing.Size(84, 17);
             this.cbUnlockVBA.TabIndex = 6;
@@ -115,18 +137,43 @@ namespace ExcelUnlockerVisual {
             this.cbUnlockVBA.UseVisualStyleBackColor = true;
             this.cbUnlockVBA.CheckedChanged += new System.EventHandler(this.cbUnlockVBA_CheckedChanged);
             // 
-            // pbUnlocker
+            // cblRemoveVeryHidden
             // 
-            this.pbUnlocker.Location = new System.Drawing.Point(24, 172);
-            this.pbUnlocker.Name = "pbUnlocker";
-            this.pbUnlocker.Size = new System.Drawing.Size(424, 23);
-            this.pbUnlocker.TabIndex = 7;
+            this.cblRemoveVeryHidden.AutoSize = true;
+            this.cblRemoveVeryHidden.Checked = true;
+            this.cblRemoveVeryHidden.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cblRemoveVeryHidden.Location = new System.Drawing.Point(24, 95);
+            this.cblRemoveVeryHidden.Name = "cblRemoveVeryHidden";
+            this.cblRemoveVeryHidden.Size = new System.Drawing.Size(119, 17);
+            this.cblRemoveVeryHidden.TabIndex = 8;
+            this.cblRemoveVeryHidden.Text = "Include VeryHidden";
+            this.cblRemoveVeryHidden.UseVisualStyleBackColor = true;
+            // 
+            // passwordInput
+            // 
+            this.passwordInput.Location = new System.Drawing.Point(80, 184);
+            this.passwordInput.Name = "passwordInput";
+            this.passwordInput.Size = new System.Drawing.Size(100, 20);
+            this.passwordInput.TabIndex = 10;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(24, 187);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Password";
             // 
             // EUVisual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(465, 207);
+            this.ClientSize = new System.Drawing.Size(465, 248);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.passwordInput);
+            this.Controls.Add(this.btnLock);
+            this.Controls.Add(this.cblRemoveVeryHidden);
             this.Controls.Add(this.pbUnlocker);
             this.Controls.Add(this.cbUnlockVBA);
             this.Controls.Add(this.rtbConsole);
@@ -153,9 +200,13 @@ namespace ExcelUnlockerVisual {
         private System.Windows.Forms.CheckBox cbOverwrite;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox rtbConsole;
-        private System.Windows.Forms.CheckBox cbUnlockVBA;
         private System.Windows.Forms.ProgressBar pbUnlocker;
         private System.ComponentModel.BackgroundWorker bwProgress;
+        private Button btnLock;
+        private CheckBox cbUnlockVBA;
+        private CheckBox cblRemoveVeryHidden;
+        private TextBox passwordInput;
+        private Label label2;
     }
 
     public class NewProgressBar : ProgressBar {
